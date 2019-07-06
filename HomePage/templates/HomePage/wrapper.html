@@ -1,0 +1,30 @@
+<!-- Wrapper for Home Page -->
+{% load static %}
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+	<meta charset="UTF-8">
+	<title>Currency</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/craft_css.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+</head>
+	<body>
+		<header>
+			<div><center><h4>Currency</h4></center></div> 
+		</header>
+		{% block content %}
+	    {% endblock %}
+	      <!-- Footer -->
+		<footer class="page-footer font-small blue">
+
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3">© 2019 Cooperation: axurtin.rep@gmail.com
+		  </div>
+		  <!-- Copyright -->
+
+		</footer>
+<!-- Footer -->
+	 </body>    
+</html>

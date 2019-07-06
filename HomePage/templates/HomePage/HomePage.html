@@ -1,0 +1,90 @@
+{% extends "HomePage/wrapper.html" %}
+{% block content %}
+{% load static %}
+<div class="row wrap">
+  <div class="col-sm-8">
+  	<!-- Table with pars data -->
+  <table class="table table-striped table-dark table-hover self_table table-bordered">
+	<thead>
+    <tr>
+      <th>Code</th>
+      <th>Par</th>
+      <th>Currency</th>
+      <th>Rate</th>
+      <th>Changes</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<!-- Print string of table in <tbody> -->
+	{% for post in tests %}
+		<tr scope="row">
+			<td>{{post.title}}</td>
+			<td>{{post.par}}</td>
+			<td>{{post.currency}}</td>
+			<td>{{post.rate}}</td>
+			<td>{{post.changes}}</td>
+			<td>{{post.persent}}</td>
+		</tr>
+	{% endfor %}
+</tbody>
+</table>	
+  </div>
+  <div class="col-sm-4">
+  	<!-- Fix block for convert currency and follow -->
+  	<div class = "fixed_block">
+  		<div class="currency_form">
+		  	<p class="font-weight-bold col-sm-4-p">Convert currency:</p>
+			<form action="" method = "GET">
+				{% csrf_token %}
+			  <div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputEmail4">First currency code</label>
+			      <input type="text" class="form-control" placeholder="EUR" name = "first_cur" id="first_cur">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="inputPassword4">Second currency code</label>
+			      <input type="text" class="form-control" placeholder="USD" name="second_cur" id="second_cur">
+			    </div>
+			  </div>
+			  <div class="form-row">
+				  <div class="form-group col-md-6">
+				  	<label for="inputAddress">Par first currency</label>
+				    <input type="text" class="form-control" placeholder="1" name="first_par_form" id="first_par_form">
+				  </div>
+				  <div class="form-group col-md-6">
+				  	<label for="inputAddress">Result</label>
+				  	<!-- Result convercy.
+				  	Initially here result convers USD to EUR, but after click button here will be rusult custom currency -->
+				    <div id="result">{{result_full}}</div>
+				  </div>
+			  </div>
+			</form>
+			<button type="submit" class="btn btn-primary" id = "button_convert">Convert</button>
+		</div>
+		<br>
+		<div class="follow_form">
+			<p class="font-weight-bold col-sm-4-p">Follow:</p>
+			<small id="emailHelp" class="form-text text-muted">You could follow you to getting rate news to email every day!</small>
+			<form>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Email address</label>
+			    <input class="form-control" id="user_email" aria-describedby="emailHelp" placeholder="Enter email">
+			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Name</label>
+			    <input class="form-control" id="user_name" placeholder="Name">
+				<small class="form-text text-muted" id="answer"></small>
+			  </div>
+			  
+			</form>
+			<button type="submit" class="btn btn-primary" id = "button_follow">Follow</button>
+		</div>
+	</div>
+  </div>
+</div>
+<script type="text/javascript" src="{% static 'js/craft_js.js' %}"></script>
+
+
+	{% endblock %}
