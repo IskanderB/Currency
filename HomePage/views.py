@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from HomePage.models import Followers
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -35,8 +37,8 @@ def index(request):
 def give_result(request):
 	#Get data from js-script(ajax)
 	if request.GET:
-		first_cur = request.GET.get('first_cur')
-		second_cur = request.GET.get('second_cur')
+		first_cur = request.GET.get('first_cur').upper()
+		second_cur = request.GET.get('second_cur').upper()
 		first_par_form = request.GET.get('first_par_form')
 	#Check request.GET is None or ''
 	if first_cur == '' or first_cur == None:
@@ -99,7 +101,9 @@ def user_follow(request):
 		if valid_email and db_check_email and len(user_email_form)<200 and len(user_name_form)<200:
 			new_user = Followers(user_email = user_email_form, user_name = user_name_form)
 			new_user.save()
-			return HttpResponse("Congratulations! Regisration finished is successful!<br> Until you will not get my messages. I develop this part.",
+			message = 'Congratulations! Regisration finished is successful! Until you will not get my messages. I develop this part.'
+			send_mail('Welcome!', message, "Yasoob", [user_email_form], fail_silently=False)
+			return HttpResponse("Congratulations! Regisration finished is successful!<br> Check your email!",
 			 content_type = 'text/html')
 		else:
 			return HttpResponse("Email error", content_type = 'text/html')

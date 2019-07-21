@@ -29,6 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Currency.rate.news@gmail.com'
+EMAIL_HOST_PASSWORD = 'flesh2019'
+DEFAULT_FROM_EMAIL = 'Alexandr'
+DEFAULT_TO_EMAIL = 'axurtin.rep@gmail.com'
 
 # Application definition
 
@@ -127,3 +134,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
