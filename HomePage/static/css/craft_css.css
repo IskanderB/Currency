@@ -12,6 +12,9 @@ div .col-sm-4 .fixed_block p {
 .row form .form-control {
   max-width: 230px;
 }
+.row form .form-control-cust {
+  max-width: 170px;
+}
 .row form .form-group div {
   margin-top: 6px;
   color: gray;

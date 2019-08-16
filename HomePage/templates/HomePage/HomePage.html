@@ -18,7 +18,7 @@
   <tbody>
   	<!-- Print string of table in <tbody> -->
 	{% for post in tests %}
-		<tr scope="row">
+		<tr scope="row" id = "{{post.title}}">
 			<td>{{post.title}}</td>
 			<td>{{post.par}}</td>
 			<td>{{post.currency}}</td>
@@ -35,22 +35,23 @@
   	<div class = "fixed_block">
   		<div class="currency_form">
 		  	<p class="font-weight-bold col-sm-4-p">Convert currency:</p>
+		  	<small id="emailHelp" class="form-text text-muted">Enter the currency code or click on the string in the table</small>
 			<form action="" method = "GET">
 				{% csrf_token %}
 			  <div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="inputEmail4">First currency code</label>
-			      <input type="text" class="form-control" placeholder="EUR" name = "first_cur" id="first_cur">
+			      <input type="text" class="form-control form-control-cust" placeholder="EUR" name = "first_cur" id="first_cur">
 			    </div>
 			    <div class="form-group col-md-6">
 			      <label for="inputPassword4">Second currency code</label>
-			      <input type="text" class="form-control" placeholder="USD" name="second_cur" id="second_cur">
+			      <input type="text" class="form-control form-control-cust" placeholder="USD" name="second_cur" id="second_cur">
 			    </div>
 			  </div>
 			  <div class="form-row">
 				  <div class="form-group col-md-6">
 				  	<label for="inputAddress">Par first currency</label>
-				    <input type="text" class="form-control" placeholder="1" name="first_par_form" id="first_par_form">
+				    <input type="text" class="form-control form-control-cust" placeholder="1" name="first_par_form" id="first_par_form">
 				  </div>
 				  <div class="form-group col-md-6">
 				  	<label for="inputAddress">Result</label>
